@@ -32,6 +32,27 @@ Register the server with your MCP client. For example, in a Claude Desktop style
 }
 ```
 
+### HTTP
+
+Start the HTTP server (no build needed, it uses `tsx`):
+
+```sh
+npm run start:http
+```
+
+It listens on `http://127.0.0.1:3000/ankimcp` (localhost only). Set `PORT` to change the port:
+
+```sh
+PORT=8080 npm run start:http
+```
+
+The server is stateless: each `POST /ankimcp` request gets its own server and transport instance. Connect a client to it, for example:
+
+```sh
+claude mcp add --transport http jisho http://127.0.0.1:3000/ankimcp
+```
+
+
 ## Tools
 
 ### `add_card`
